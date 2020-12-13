@@ -19,7 +19,7 @@ function App() {
         .then(result => {
           setWeather(result)
           setQuery('')
-          // console.log(result)
+          console.log(result)
         })
     }
   }
@@ -62,7 +62,10 @@ function App() {
                 {Math.round(weather.main.temp * 1.8 + 32)}° F
               </div>
               <div className="weather">
-                {weather.weather[0].main}
+                Feels like: {Math.round(weather.main.feels_like * 1.8 + 32)}°F <br></br>
+                {weather.weather[0].description} <br></br>
+                High: {Math.round(weather.main.temp_max *1.8+32)}°F <br></br>
+                Low: {Math.round(weather.main.temp_min *1.8+32)}°F
               </div>
             </div>
           </div>
