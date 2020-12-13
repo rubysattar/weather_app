@@ -39,6 +39,11 @@ function App() {
   return (
     <div className={
       (typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+    {/* <div className={
+      (typeof weather.main != "undefined") ? ((weather.weather[0] === "Clouds") ? 'app clouds' : 'app') 
+      || ((weather.weather[0] === "Rain") ? 'app rain' : 'app')  
+      || ((weather.weather[0] === "Snow") ? 'app snow' : 'app')
+      : 'app'}></div> */}
       <main>
         <div className ="search-box">
           <input
@@ -48,6 +53,7 @@ function App() {
           onChange={e => setQuery(e.target.value)}
           value={query}
           onKeyPress={search}
+          autoFocus
           />
         </div>
         {/* need a check before we can access weather.sys.country */}
@@ -62,10 +68,9 @@ function App() {
                 {Math.round(weather.main.temp * 1.8 + 32)}° F
               </div>
               <div className="weather">
-                Feels like: {Math.round(weather.main.feels_like * 1.8 + 32)}°F <br></br>
-                {weather.weather[0].description} <br></br>
-                High: {Math.round(weather.main.temp_max *1.8+32)}°F <br></br>
-                Low: {Math.round(weather.main.temp_min *1.8+32)}°F
+                Feels like: {Math.round(weather.main.feels_like * 1.8 + 32)}°F <br></br><br></br>
+                {weather.weather[0].main} <br></br><br></br>
+                H: {Math.round(weather.main.temp_max *1.8+32)}°F <span> </span>L: {Math.round(weather.main.temp_min *1.8+32)}°F
               </div>
             </div>
           </div>
